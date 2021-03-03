@@ -1,4 +1,4 @@
-# marquiz
+# quiz
 
 ## Project setup
 ```
