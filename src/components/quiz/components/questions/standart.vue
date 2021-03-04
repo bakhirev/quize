@@ -1,5 +1,5 @@
 <template>
-  <div class="quiz-question">
+  <div class="quiz-question" :style="gridTemplate">
     <div class="quiz-question-header">
       <div v-if="question.title" class="quiz-question-title">
         {{ question.title }}
@@ -14,7 +14,7 @@
           message="загрузка вариантов ответа"
       />
       <template v-else>
-        <Answer
+        <CommonAnswer
             v-for="answer in answers"
             :key="answer.id"
             :state="state"
@@ -24,17 +24,27 @@
         />
       </template>
     </div>
+    <img
+        v-if="question.cover_url"
+        class="quiz-question-cover"
+        :src="EMPTY_IMAGE"
+        :style="{
+          'background-image': `url(${question.cover_url})`
+         }"
+    />
   </div>
 </template>
 
 <script>
-import QuizLoader from './loader';
-import Answer from './answers';
+import QuizLoader from '../loader';
+import CommonAnswer from '../answers/common';
+
+const EMPTY_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4AWMAAQAABQABNtCI3QAAAABJRU5ErkJggg==';
 
 export default {
-  name: 'QuizQuestion',
+  name: 'DefaultQuestion',
   components: {
-    Answer,
+    CommonAnswer,
     QuizLoader,
   },
   props: {
@@ -54,24 +64,30 @@ export default {
   data() {
     return {
       isLoading: false,
-      answers: []
+      answers: [],
+      EMPTY_IMAGE,
     };
   },
   watch: {
-    question() {
-      this.isLoading = true;
-      this.fetchAnswers()
-          .finally(() => {
-            this.isLoading = false;
-          });
+    question: {
+      handler() {
+        this.isLoading = true;
+        this.fetchAnswers()
+            .finally(() => {
+              this.isLoading = false;
+            });
+      },
+      immediate: true
     },
   },
-  created() {
-    this.isLoading = true;
-    this.fetchAnswers()
-        .finally(() => {
-          this.isLoading = false;
-        });
+  computed: {
+    gridTemplate() {
+      let template = '"header header" "body body"';
+      if (this.question.cover_url) template = '"header header" "body cover"';
+      return {
+        'grid-template-areas': template,
+      };
+    },
   },
   methods: {
     fetchAnswers() {
@@ -95,16 +111,37 @@ export default {
 
 <style scoped>
 .quiz-question {
+  overflow-y: scroll;
+  background-color: white;
+
+  display: grid;
+  grid-template-areas: "header header" "body body";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px auto;
+}
+
+.quiz-question::-webkit-scrollbar {
+  width: 5px;
+}
+
+.quiz-question::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.quiz-question::-webkit-scrollbar-thumb {
+  background-color: #FFAA00;
+  outline: none;
 }
 
 .quiz-question-header {
   display: block;
   padding: 32px;
+  grid-area: header;
 }
 
-.quiz-question-title {
+.quiz-question-title,
+.quiz-question-description {
   display: block;
-  font-size: 28px;
   font-weight: 100;
   line-height: 1.3;
   text-overflow: ellipsis;
@@ -113,11 +150,26 @@ export default {
   text-align: left;
 }
 
+.quiz-question-title {
+  font-size: 28px;
+}
+
 .quiz-question-description {
+  font-size: 14px;
 }
 
 .quiz-question-body {
   position: relative;
-  padding: 0 32px 90px 32px;
+  padding: 0 32px;
+  grid-area: body;
+}
+
+.quiz-question-cover {
+  grid-area: cover;
+  border: none;
+  width: 100%;
+  background-position: center center;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 </style>

@@ -3,6 +3,12 @@
       class="quiz-answer"
       @click="updateState"
   >
+    <span
+        :class="{
+          'quiz-answer-icon-checked': isChecked,
+        }"
+        class="quiz-answer-icon"
+    ></span>
     <div class="quiz-answer-title">
       {{ answer.title || '' }}
     </div>
@@ -24,6 +30,10 @@ export default {
     answer: {
       type: Object,
       required: true
+    },
+    isChecked: {
+      type: Boolean,
+      default: false
     },
   },
   methods: {
@@ -51,8 +61,23 @@ export default {
   cursor: pointer;
 }
 
+.quiz-answer-icon {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  vertical-align: top;
+  margin-right: 12px;
+  border: 1px solid gray;
+  background-color: #FFFFFF;
+}
+
+.quiz-answer-icon-checked {
+  background-color: #FFAA00;
+}
+
 .quiz-answer-title {
-  display: block;
+  display: inline-block;
   font-size: 16px;
   font-weight: 100;
   line-height: 1.3;

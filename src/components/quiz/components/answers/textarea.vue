@@ -1,7 +1,5 @@
 <template>
-  <div
-      class="quiz-answer"
-  >
+  <div class="quiz-answer">
     <div class="quiz-answer-title">
       {{ answer.title || '' }}
     </div>
@@ -78,6 +76,7 @@ export default {
   outline: none;
   padding: 8px;
   font-size: 16px;
+  box-sizing: border-box;
   resize: none;
 }
 </style>

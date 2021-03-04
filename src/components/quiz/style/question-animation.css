@@ -1,0 +1,57 @@
+.quiz-question-cl-animation,
+.quiz-question-rc-animation,
+.quiz-question-lc-animation,
+.quiz-question-cr-animation {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.quiz-question-cl-animation {
+    left: 0;
+    animation: quiz-question-cl-animation 0.25s linear 1;
+}
+
+.quiz-question-lc-animation {
+    left: 0;
+    animation: quiz-question-cl-animation 0.25s linear 1 reverse;
+}
+
+@keyframes quiz-question-cl-animation {
+    from {
+        left: 0;
+        opacity: 1;
+    }
+    95% {
+        opacity: 0.3;
+    }
+    to {
+        left: -100%;
+        opacity: 0;
+    }
+}
+
+.quiz-question-rc-animation {
+    right: -150%;
+    animation: quiz-question-rc-animation 0.25s linear 1;
+}
+
+.quiz-question-cr-animation {
+    right: -150%;
+    animation: quiz-question-rc-animation 0.25s linear 1 reverse;
+}
+
+@keyframes quiz-question-rc-animation {
+    from {
+        right: -150%;
+        opacity: 0;
+    }
+    15% {
+        right: -70%;
+        opacity: 0.6;
+    }
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}

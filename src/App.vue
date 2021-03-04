@@ -1,26 +1,45 @@
 <template>
   <div>
-    <QuizQuestion :id="1"/>
+    <div class="quiz-container">
+      <Quiz :id="1"/>
+    </div>
+    <div class="quiz-container">
+      <Quiz :quiz="quiz1"/>
+    </div>
   </div>
 </template>
 
 <script>
-import QuizQuestion from './components/quiz'
+import quiz1 from './examples/1'
+import Quiz from './components/quiz'
 
 export default {
   name: 'App',
   components: {
-    QuizQuestion
+    Quiz
+  },
+  data() {
+    return {
+      quiz1,
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
 body {
   width: auto;
   height: auto;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
+
+.quiz-container {
+  height: 49vh;
+  display: block;
+  border-bottom: 4px dotted red;
+}
+
 </style>

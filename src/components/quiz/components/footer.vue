@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     progressPercent() {
-      return (((100 / this.total) * this.step) + '%');
+      return Math.ceil((100 / this.total) * this.step) + '%';
     },
     progress() {
       return {
@@ -46,14 +46,12 @@ export default {
 
 <style scoped>
 .quiz-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   display: block;
-  padding: 24px 270px 24px 32px;
   border-top: 1px solid gray;
-  background-color: white;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  padding: 24px 0 0 24px;
 }
 
 .quiz-footer-progress-description {
@@ -75,7 +73,7 @@ export default {
 
 .quiz-footer-progress {
   display: block;
-  width: 100%;
+  width: 50%;
   background-color: #D9D9D9;
   border-radius: 5px;
 }

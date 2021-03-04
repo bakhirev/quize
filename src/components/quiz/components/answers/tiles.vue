@@ -4,6 +4,7 @@
       @click="updateState"
   >
     <img
+        v-if="answer.cover_url"
         :src="answer.cover_url || ''"
         :alt="answer.title || ''"
         class="quiz-answer-cover"
@@ -50,13 +51,17 @@ export default {
 .quiz-answer {
   display: inline-block;
   width: 40%;
-  max-width: 200px;
+  max-width: 180px;
   padding: 0;
   border: 1px solid gray;
   border-radius: 8px;
   margin: 0 16px 16px 0;
   cursor: pointer;
   vertical-align: top;
+}
+
+.quiz-answer:hover {
+ box-shadow: 0 0 5px #FFAA00;
 }
 
 .quiz-answer-cover {
@@ -69,7 +74,8 @@ export default {
 .quiz-answer-title {
   display: block;
   margin: 8px 0;
-  font-size: 16px;
+  height: 32px;
+  font-size: 14px;
   font-weight: 100;
   line-height: 1.3;
   text-overflow: ellipsis;

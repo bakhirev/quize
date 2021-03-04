@@ -29,7 +29,8 @@ export default {
   width: 100%;
   height: 100%;
   text-align: center;
-  background-color: white;
+  background-color: #F8F8F8;
+  opacity: 0.7;
 }
 
 .quiz-loader-container {
