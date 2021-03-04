@@ -22,10 +22,10 @@ export function getQuestions(quizId) {
     return http.mock([
         {id: 1, title: 'Какой у вас тип объекта?'},
         {id: 2, title: 'Количество машиномест'},
-        {id: 3, title: 'Количество въездов на территорию парковки', cover_url: '/assets/quiz_1/9.jpg' },
-        {id: 4, title: 'Количество выездов с территории парковки', cover_url: '/assets/quiz_1/10.jpg'},
+        {id: 3, title: 'Количество въездов на территорию парковки', cover_url: './assets/quiz_1/9.jpg' },
+        {id: 4, title: 'Количество выездов с территории парковки', cover_url: './assets/quiz_1/10.jpg'},
         {id: 5, title: 'Количество реверсивных проездов (сквозной въезд-выезд)'},
-        {id: 6, title: 'Пользователи парковки', cover_url: '/assets/quiz_1/11.jpg'},
+        {id: 6, title: 'Пользователи парковки', cover_url: './assets/quiz_1/11.jpg'},
         {id: 7, title: 'Сколько терминалов оплаты вам нужно?'},
         {id: 8, title: 'Напишите, пожалуйста, адрес объекта'},
         {id: 9, title: 'Форма отправки данных', template_id: QUESTION_TEMPLATES.FORM},
@@ -51,31 +51,31 @@ export function getHelps(testId) {
         {
             id: 1, template_id: 1, question_id: 1,
             title: 'Специалист RPS',
-            cover_url: '/assets/avatar.jpg',
+            cover_url: './assets/avatar.jpg',
             description: 'От типа объекта чаще всего зависит, какие задачи требуется решить.\nНапример, для бизнес-центров разграничить доступ для постоянных и гостей.\nА для спортивных комплексов организовать въезд по штрих-коду в билете.'
         },
         {
             id: 1, template_id: 1, question_id: 2,
             title: 'Специалист RPS',
-            cover_url: '/assets/avatar.jpg',
+            cover_url: './assets/avatar.jpg',
             description: 'Это поможет подобрать оптимальный состав для вашего оборудования.'
         },
         {
             id: 1, template_id: 1, question_id: 5,
             title: 'Специалист RPS',
-            cover_url: '/assets/avatar.jpg',
+            cover_url: './assets/avatar.jpg',
             description: 'Въезд и выезд осуществляются по одной полосе и через один шлагбаум.'
         },
         {
             id: 1, template_id: 1, question_id: 6,
             title: 'Специалист RPS',
-            cover_url: '/assets/avatar.jpg',
+            cover_url: './assets/avatar.jpg',
             description: 'Постоянные клиенты чаще всего это арендаторы бизнес-центров или их сотрудники. Для них можно настроить систему абонементов. А для разовых посетителей или гостей может быть настроена программа лояльности.'
         },
         {
             id: 1, template_id: 1, question_id: 8,
             title: 'Специалист RPS',
-            cover_url: '/assets/avatar.jpg',
+            cover_url: './assets/avatar.jpg',
             description: 'Может быть ваш объект уже есть в нашей базе и мы ранее готовили КП для Вас. Тогда его нужно будет просто обновить.'
         }
     ], 100);

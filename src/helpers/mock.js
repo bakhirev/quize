@@ -49,14 +49,14 @@ export default {
         'Другое',
     ]).map((item, index) => {
         item.cover_url = [
-            '/assets/quiz_1/1.jpg',
-            '/assets/quiz_1/2.jpg',
-            '/assets/quiz_1/3.jpg',
-            '/assets/quiz_1/4.jpg',
-            '/assets/quiz_1/5.jpg',
-            '/assets/quiz_1/6.jpg',
-            '/assets/quiz_1/7.jpg',
-            '/assets/quiz_1/8.jpg',
+            './assets/quiz_1/1.jpg',
+            './assets/quiz_1/2.jpg',
+            './assets/quiz_1/3.jpg',
+            './assets/quiz_1/4.jpg',
+            './assets/quiz_1/5.jpg',
+            './assets/quiz_1/6.jpg',
+            './assets/quiz_1/7.jpg',
+            './assets/quiz_1/8.jpg',
         ][index];
         return item;
     }),
