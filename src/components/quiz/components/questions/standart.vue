@@ -112,7 +112,7 @@ export default {
 <style scoped>
 .quiz-question {
   overflow-y: scroll;
-  background-color: white;
+  background-color: var(--color-5);
 
   display: grid;
   grid-template-areas: "header header" "body body";
@@ -121,7 +121,7 @@ export default {
 }
 
 .quiz-question::-webkit-scrollbar {
-  width: 5px;
+  width: var(--space-xs);
 }
 
 .quiz-question::-webkit-scrollbar-track {
@@ -129,13 +129,13 @@ export default {
 }
 
 .quiz-question::-webkit-scrollbar-thumb {
-  background-color: #FFAA00;
+  background-color: var(--color-6);
   outline: none;
 }
 
 .quiz-question-header {
   display: block;
-  padding: 32px;
+  padding: var(--space-xxl);
   grid-area: header;
 }
 
@@ -145,7 +145,7 @@ export default {
   font-weight: 100;
   line-height: 1.3;
   text-overflow: ellipsis;
-  color: #363636;
+  color: var(--color-1);
   text-decoration: none;
   text-align: left;
 }
@@ -155,12 +155,12 @@ export default {
 }
 
 .quiz-question-description {
-  font-size: 14px;
+  font-size: var(--font-size-s);
 }
 
 .quiz-question-body {
   position: relative;
-  padding: 0 32px;
+  padding: 0 var(--space-xxl);
   grid-area: body;
 }
 

@@ -54,11 +54,17 @@ export default {
 <style scoped>
 .quiz-answer {
   display: block;
-  padding: 16px;
-  border: 1px solid gray;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  padding: var(--space-l);
+  border: 1px solid var(--color-8);
+  border-radius: var(--space-s);
+  margin-bottom: var(--space-l);
   cursor: pointer;
+  transition: 0.3s border, 0.3s box-shadow;
+}
+
+.quiz-answer:hover {
+  border: 1px solid var(--color-7);
+  box-shadow: 1px 1px 2px var(--color-8);
 }
 
 .quiz-answer-icon {
@@ -67,22 +73,22 @@ export default {
   width: 20px;
   border-radius: 20px;
   vertical-align: top;
-  margin-right: 12px;
-  border: 1px solid gray;
-  background-color: #FFFFFF;
+  margin-right: var(--space-m);
+  border: 1px solid var(--color-8);
+  background-color: var(--color-8);
 }
 
 .quiz-answer-icon-checked {
-  background-color: #FFAA00;
+  background-color: var(--color-6);
 }
 
 .quiz-answer-title {
   display: inline-block;
-  font-size: 16px;
+  font-size: var(--font-size-m);
   font-weight: 100;
   line-height: 1.3;
   text-overflow: ellipsis;
-  color: #363636;
+  color: var(--color-1);
   text-decoration: none;
   text-align: left;
   vertical-align: middle;

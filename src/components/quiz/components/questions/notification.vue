@@ -38,13 +38,13 @@ export default {
 }
 
 .quiz-question-title {
-  margin: 64px auto 12px auto;
+  margin: 64px auto var(--space-m) auto;
   font-size: 26px;
-  color: #363636;
+  color: var(--color-1);
 }
 
 .quiz-question-description {
-  font-size: 18px;
-  color: #999999;
+  font-size: var(--font-size-l);
+  color: var(--color-2);
 }
 </style>

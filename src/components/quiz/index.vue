@@ -238,13 +238,14 @@ export default {
 
 <style scoped>
 @import "./style/question-animation.css";
+@import "./style/variables.css";
 
 .quiz {
   position: relative;
   height: 100%;
   width: 100%;
   font-family: Arial, Verdana, sans-serif;
-  font-size: 16px;
+  font-size: var(--font-size-m);
   overflow: hidden;
   background-color: #F8F8F8;
 

@@ -57,12 +57,12 @@ export default {
 
 .quiz-answer-title {
   display: block;
-  margin: 0 0 16px 0;
-  font-size: 16px;
+  margin: 0 0 var(--space-l) 0;
+  font-size: var(--font-size-m);
   font-weight: 100;
   line-height: 1.3;
   text-overflow: ellipsis;
-  color: #363636;
+  color: var(--color-1);
   text-decoration: none;
   text-align: left;
   vertical-align: middle;
@@ -74,9 +74,10 @@ export default {
   height: 80%;
   min-height: 300px;
   outline: none;
-  padding: 8px;
-  font-size: 16px;
+  padding: var(--space-s);
+  font-size: var(--font-size-m);
   box-sizing: border-box;
+  border: 1px solid var(--color-8);
   resize: none;
 }
 </style>
