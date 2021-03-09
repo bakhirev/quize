@@ -12,8 +12,15 @@
         :question="question"
         @update="$emit('update', $event)"
     />
+    <MultipleQuestion
+        v-if="question.template_id === QUESTION_TEMPLATES.MULTIPLE"
+        :state="state"
+        :question="question"
+        :getAnswers="getAnswers"
+        @update="$emit('update', $event)"
+    />
     <DefaultQuestion
-        v-if="!question.template_id || question.template_id === QUESTION_TEMPLATES.DEFAULT"
+        v-if="isDefaultTemplate"
         :state="state"
         :question="question"
         :getAnswers="getAnswers"
@@ -26,6 +33,7 @@
 <script>
 import FormQuestion from './form';
 import NotificationQuestion from './notification';
+import MultipleQuestion from './multiple';
 import DefaultQuestion from './standart';
 import {QUESTION_TEMPLATES} from '../../helpers/constants';
 
@@ -34,6 +42,7 @@ export default {
   components: {
     FormQuestion,
     NotificationQuestion,
+    MultipleQuestion,
     DefaultQuestion,
   },
   props: {
@@ -49,6 +58,15 @@ export default {
       type: Function,
       required: true
     },
+  },
+  computed: {
+    isDefaultTemplate() {
+      return !this.question.template_id || [
+        QUESTION_TEMPLATES.DEFAULT,
+        QUESTION_TEMPLATES.RANGE,
+        QUESTION_TEMPLATES.MULTIPLE,
+      ].includes(this.question.template_id);
+    }
   },
   data() {
     return {

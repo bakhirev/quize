@@ -60,11 +60,11 @@ export default {
         ][index];
         return item;
     }),
-    2: getAnswersMock(ANSWER_TEMPLATES.RANGE, 'cars', ['50', '1000']),
+    2: getAnswersMock(ANSWER_TEMPLATES.RANGE, 'cars', ['50-1000']),
     3: getAnswersMock(ANSWER_TEMPLATES.SELECT, 'exit-in', ['1', '2', '3', '4', '5', 'Более']),
     4: getAnswersMock(ANSWER_TEMPLATES.SELECT, 'exit-out', ['1', '2', '3', '4', '5', 'Более']),
     5: getAnswersMock(ANSWER_TEMPLATES.SELECT, 'exit-reverse', ['нет', '1', '2', 'Более']),
-    6: getAnswersMock(ANSWER_TEMPLATES.SELECT, 'users', [
+    6: getAnswersMock(ANSWER_TEMPLATES.CHECKBOX, 'users', [
         'Постоянные клиенты',
         'Разовые',
         'Гости постоянных клиентов',

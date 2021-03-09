@@ -21,12 +21,12 @@ export function getQuestions(quizId) {
     console.log(`GET http://quiz/questions?quizId=${quizId}`);
     return http.mock([
         {id: 1, title: 'Какой у вас тип объекта?'},
-        {id: 2, title: 'Количество машиномест'},
+        {id: 2, title: 'Количество машиномест', template_id: QUESTION_TEMPLATES.RANGE},
         {id: 3, title: 'Количество въездов на территорию парковки', cover_url: './assets/quiz_1/9.jpg' },
         {id: 4, title: 'Количество выездов с территории парковки', cover_url: './assets/quiz_1/10.jpg'},
         {id: 5, title: 'Количество реверсивных проездов (сквозной въезд-выезд)'},
-        {id: 6, title: 'Пользователи парковки', cover_url: './assets/quiz_1/11.jpg'},
-        {id: 7, title: 'Сколько терминалов оплаты вам нужно?'},
+        {id: 6, title: 'Пользователи парковки', template_id: QUESTION_TEMPLATES.MULTIPLE},
+        {id: 7, title: 'Сколько терминалов оплаты вам нужно?', cover_url: './assets/quiz_1/11.jpg'},
         {id: 8, title: 'Напишите, пожалуйста, адрес объекта'},
         {id: 9, title: 'Форма отправки данных', template_id: QUESTION_TEMPLATES.FORM},
         {

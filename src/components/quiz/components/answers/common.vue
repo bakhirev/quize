@@ -1,18 +1,17 @@
 <template>
   <keep-alive>
-    <TilesAnswer
-        v-if="answer.template_id === ANSWER_TEMPLATES.TILES"
+    <RangeAnswer
+        v-if="answer.template_id === ANSWER_TEMPLATES.RANGE"
         :state="state"
         :answer="answer"
         :question="question"
         @update="$emit('update', $event)"
     />
-    <SelectAnswer
-        v-if="answer.template_id === ANSWER_TEMPLATES.SELECT || !answer.template_id"
+    <TilesAnswer
+        v-if="answer.template_id === ANSWER_TEMPLATES.TILES"
         :state="state"
         :answer="answer"
         :question="question"
-        :isChecked="isChecked"
         @update="$emit('update', $event)"
     />
     <SelectAnswer
@@ -29,12 +28,30 @@
         :question="question"
         @update="$emit('update', $event)"
     />
+    <CheckboxAnswer
+        v-if="answer.template_id === ANSWER_TEMPLATES.CHECKBOX"
+        :state="state"
+        :answer="answer"
+        :question="question"
+        :isChecked="isChecked"
+        @update="$emit('update', $event)"
+    />
+    <SelectAnswer
+        v-if="isDefaultTemplate"
+        :state="state"
+        :answer="answer"
+        :question="question"
+        :isChecked="isChecked"
+        @update="$emit('update', $event)"
+    />
   </keep-alive>
 </template>
 
 <script>
+import RangeAnswer from './range';
 import TilesAnswer from './tiles';
 import SelectAnswer from './select';
+import CheckboxAnswer from './checkbox';
 import TextareaAnswer from './textarea';
 import {ANSWER_TEMPLATES} from '../../helpers/constants';
 
@@ -43,7 +60,9 @@ export default {
   components: {
     TilesAnswer,
     SelectAnswer,
+    CheckboxAnswer,
     TextareaAnswer,
+    RangeAnswer,
   },
   props: {
     state: {
@@ -65,8 +84,18 @@ export default {
     };
   },
   computed: {
+    isDefaultTemplate() {
+      return !this.formattedAnswer.template_id || [
+        ANSWER_TEMPLATES.SELECT,
+      ].includes(this.formattedAnswer.template_id);
+    },
     isChecked() {
-      return this.state[this.formattedAnswer.property] === this.formattedAnswer.value;
+      const value = this.formattedAnswer.value;
+      const currentValue = this.state[this.formattedAnswer.property];
+      const isMultiselect = this.answer.template_id === ANSWER_TEMPLATES.CHECKBOX;
+      return isMultiselect
+          ? (currentValue || []).includes(value)
+          : currentValue === value;
     },
     formattedAnswer() {
       const type = typeof this.answer;

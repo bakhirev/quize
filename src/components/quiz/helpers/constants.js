@@ -2,14 +2,17 @@ export const ANSWER_TEMPLATES = {
     TILES: 1,
     RANGE: 2,
     SELECT: 3,
-    TEXTAREA: 4,
-    SEND_FORM: 5,
+    CHECKBOX: 4,
+    TEXTAREA: 5,
+    SEND_FORM: 6,
 };
 
 export const QUESTION_TEMPLATES = {
     DEFAULT: 1,
-    FORM: 2,
-    NOTIFICATION: 3,
+    RANGE: 2,
+    MULTIPLE: 3,
+    FORM: 4,
+    NOTIFICATION: 5,
 };
 
 export const ANIMATION_CODE = {

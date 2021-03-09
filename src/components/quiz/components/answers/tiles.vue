@@ -4,9 +4,12 @@
       @click="updateState"
   >
     <img
-        :src="answer.cover_url || EMPTY_IMAGE"
+        :src="EMPTY_IMAGE"
         :alt="answer.title || ''"
         class="quiz-answer-cover"
+        :style="{
+          'background-image': `url(${answer.cover_url || ''})`,
+        }"
     />
     <div class="quiz-answer-title">
       {{ answer.title || '' }}
@@ -15,7 +18,7 @@
 </template>
 
 <script>
-const EMPTY_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4AWMAAQAABQABNtCI3QAAAABJRU5ErkJggg==';
+const EMPTY_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXYyAVMDAAAAAzAAH4qOFpAAAAAElFTkSuQmCC';
 
 export default {
   name: 'TilesAnswer',
@@ -57,7 +60,7 @@ export default {
 .quiz-answer {
   display: inline-block;
   width: 40%;
-  max-width: 180px;
+  max-width: 200px;
   padding: 0;
   border: 1px solid var(--color-8);
   border-radius: var(--space-s);
@@ -76,6 +79,10 @@ export default {
   width: 100%;
   border-radius: var(--space-s) var(--space-s) 0 0;
   margin: 0;
+  background-color: var(--color-4);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 120% auto;
 }
 
 .quiz-answer-title {

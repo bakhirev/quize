@@ -48,6 +48,7 @@ import {
 } from './api';
 import {
   ANIMATION_CODE,
+  ANSWER_TEMPLATES,
   QUESTION_TEMPLATES,
 } from "./helpers/constants";
 
@@ -194,12 +195,21 @@ export default {
     },
     openNextStep() {
       const index = this.questionQueue.indexOf(this.currentQuestionId) + 1;
-      if (index >= this.questionQueue.length) return;
+      if (index >= this.questionQueue.length) {
+        if (this.currentQuestion.template_id !== QUESTION_TEMPLATES.DEFAULT) this.nextStep();
+        return;
+      }
       this.changeQuestion(this.questionQueue[index]);
       this.currentStep = this.questionIds.indexOf(this.currentQuestionId);
     },
     updateState({state, question, answer}) {
       this.localState = {...state};
+      const needUseNextButton = answer.template_id === ANSWER_TEMPLATES.RANGE
+        || question.template_id === QUESTION_TEMPLATES.MULTIPLE;
+      if (needUseNextButton) return;
+      this.nextStep(question, answer);
+    },
+    nextStep(question = this.currentQuestion, answer = {}) {
       this.currentStep = this.questionIds.indexOf(question.id) + 1;
       const questionId = answer.next_question_id
           || question.next_question_id
@@ -244,7 +254,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
-  font-family: Arial, Verdana, sans-serif;
+  font-family: "GilroyRegular";
   font-size: var(--font-size-m);
   overflow: hidden;
   background-color: #F8F8F8;

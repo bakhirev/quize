@@ -7,8 +7,10 @@
       <div v-if="question.description" class="quiz-question-description">
         {{ question.description }}
       </div>
+      <slot name="header" />
     </div>
     <div class="quiz-question-body">
+      <slot name="body" />
       <QuizLoader
           v-if="isLoading"
           message="загрузка вариантов ответа"
@@ -24,14 +26,18 @@
         />
       </template>
     </div>
-    <img
+    <div
         v-if="question.cover_url"
-        class="quiz-question-cover"
-        :src="EMPTY_IMAGE"
-        :style="{
-          'background-image': `url(${question.cover_url})`
-         }"
-    />
+        class="quiz-question-cover-container"
+    >
+      <img
+          class="quiz-question-cover"
+          :src="EMPTY_IMAGE"
+          :style="{
+            'background-image': `url(${question.cover_url})`
+          }"
+      />
+    </div>
   </div>
 </template>
 
@@ -39,7 +45,7 @@
 import QuizLoader from '../loader';
 import CommonAnswer from '../answers/common';
 
-const EMPTY_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4AWMAAQAABQABNtCI3QAAAABJRU5ErkJggg==';
+const EMPTY_IMAGE = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAANSURBVBhXYyAVMDAAAAAzAAH4qOFpAAAAAElFTkSuQmCC';
 
 export default {
   name: 'DefaultQuestion',
@@ -117,7 +123,7 @@ export default {
   display: grid;
   grid-template-areas: "header header" "body body";
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 100px auto;
+  grid-template-rows: minmax(100px, max-content) auto;
 }
 
 .quiz-question::-webkit-scrollbar {
@@ -134,14 +140,14 @@ export default {
 }
 
 .quiz-question-header {
-  display: block;
-  padding: var(--space-xxl);
   grid-area: header;
+  padding: var(--space-l) var(--space-xxl);
 }
 
 .quiz-question-title,
 .quiz-question-description {
   display: block;
+  width: 100%;
   font-weight: 100;
   line-height: 1.3;
   text-overflow: ellipsis;
@@ -152,6 +158,7 @@ export default {
 
 .quiz-question-title {
   font-size: 28px;
+  font-family: "GilroyBold";
 }
 
 .quiz-question-description {
@@ -164,12 +171,20 @@ export default {
   grid-area: body;
 }
 
-.quiz-question-cover {
+.quiz-question-cover-container {
   grid-area: cover;
   border: none;
   width: 100%;
+  text-align: center;
+}
+
+.quiz-question-cover {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
   background-position: center center;
-  background-size: 100% auto;
+  background-size: 80% auto;
   background-repeat: no-repeat;
+  vertical-align: top;
 }
 </style>

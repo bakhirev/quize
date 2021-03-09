@@ -21,4 +21,21 @@
     --color-7: #FFC44D;
     --color-8: #E6E6E6;
     --color-9: #737373;
+    --color-10: #FFAA00;
+    --color-11: #FFEECC;
+}
+
+@font-face {
+    font-family: "GilroyBold";
+    src: url("./gilroy-bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "GilroyMedium";
+    src: url("./gilroy-medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "GilroyRegular";
+    src: url("./gilroy-regular.woff2") format("woff2");
 }
