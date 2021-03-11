@@ -75,6 +75,7 @@ export default {
   margin-bottom: var(--space-l);
   cursor: pointer;
   transition: 0.3s border, 0.3s box-shadow;
+  white-space: nowrap;
 }
 
 .quiz-answer-checked {

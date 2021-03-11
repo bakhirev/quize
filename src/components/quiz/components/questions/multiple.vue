@@ -51,6 +51,12 @@ export default {
 .quiz-question-multiple .quiz-question-body {
   column-count: 2;
 }
+
+@media screen and (max-width: 850px) {
+  .quiz-question-multiple .quiz-question-body {
+    column-count: 1;
+  }
+}
 </style>
 
 <style scoped>
@@ -86,5 +92,24 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;
+}
+
+@media screen and (max-width: 850px) {
+  .quiz-question {
+    grid-template-areas: "header" "body";
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(100px, max-content) auto;
+  }
+
+  .quiz-question-with-cover {
+    grid-template-areas: "header" "cover" "body";
+    grid-template-rows: minmax(100px, max-content) minmax(400px, max-content) auto;
+  }
+
+  .quiz-question-cover {
+    width: auto;
+    height: 90%;
+    background-size: auto 80%;
+  }
 }
 </style>

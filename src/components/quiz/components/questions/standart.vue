@@ -1,5 +1,10 @@
 <template>
-  <div class="quiz-question" :style="gridTemplate">
+  <div
+      class="quiz-question"
+      :class="{
+        'quiz-question-with-cover': !!question.cover_url
+      }"
+  >
     <div class="quiz-question-header">
       <div v-if="question.title" class="quiz-question-title">
         {{ question.title }}
@@ -86,15 +91,6 @@ export default {
       immediate: true
     },
   },
-  computed: {
-    gridTemplate() {
-      let template = '"header header" "body body"';
-      if (this.question.cover_url) template = '"header header" "body cover"';
-      return {
-        'grid-template-areas': template,
-      };
-    },
-  },
   methods: {
     fetchAnswers() {
       return this.question.answers
@@ -124,6 +120,10 @@ export default {
   grid-template-areas: "header header" "body body";
   grid-template-columns: 1fr 1fr;
   grid-template-rows: minmax(100px, max-content) auto;
+}
+
+.quiz-question-with-cover {
+  grid-template-areas: "header header" "body cover";
 }
 
 .quiz-question::-webkit-scrollbar {
@@ -186,5 +186,24 @@ export default {
   background-size: 80% auto;
   background-repeat: no-repeat;
   vertical-align: top;
+}
+
+@media screen and (max-width: 850px) {
+  .quiz-question {
+    grid-template-areas: "header" "body";
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(100px, max-content) auto;
+  }
+
+  .quiz-question-with-cover {
+    grid-template-areas: "header" "cover" "body";
+    grid-template-rows: minmax(100px, max-content) minmax(400px, max-content) auto;
+  }
+
+  .quiz-question-cover {
+    width: auto;
+    height: 90%;
+    background-size: auto 80%;
+  }
 }
 </style>
