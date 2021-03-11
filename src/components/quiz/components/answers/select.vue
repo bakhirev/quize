@@ -1,6 +1,9 @@
 <template>
   <div
       class="quiz-answer"
+      :class="{
+          'quiz-answer-checked': isChecked,
+        }"
       @click="updateState"
   >
     <span
@@ -62,23 +65,42 @@ export default {
   transition: 0.3s border, 0.3s box-shadow;
 }
 
-.quiz-answer:hover {
+.quiz-answer-checked {
   border: 1px solid var(--color-7);
-  box-shadow: 1px 1px 2px var(--color-8);
+  box-shadow: 1px 1px 2px var(--color-12);
+}
+
+.quiz-answer:hover {
+  box-shadow: 1px 1px 2px var(--color-3);
 }
 
 .quiz-answer-icon {
+  position: relative;
   display: inline-block;
   height: 20px;
   width: 20px;
   border-radius: 20px;
+  box-sizing: border-box;
   vertical-align: top;
   margin-right: var(--space-m);
-  border: 1px solid var(--color-8);
+  border: 3px solid var(--color-8);
   background-color: var(--color-8);
 }
 
 .quiz-answer-icon-checked {
+  border: 3px solid var(--color-6);
+  box-shadow: 1px 1px 2px var(--color-11);
+}
+
+.quiz-answer-icon-checked::after {
+  content: '';
+  position: absolute;
+  top: 1.8px;
+  left: 1.8px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
   background-color: var(--color-6);
 }
 

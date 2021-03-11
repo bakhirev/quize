@@ -16,7 +16,13 @@
     </div>
 
     <div class="quiz-footer-buttons">
-      <div class="quiz-footer-prev" @click="$emit('prev')">
+      <div
+          class="quiz-footer-prev"
+          :class="{
+            'quiz-footer-disable': disablePrev,
+          }"
+          @click="onClickPrev"
+      >
         <svg class="quiz-footer-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
                 fill-rule="nonzero"
@@ -24,7 +30,13 @@
           />
         </svg>
       </div>
-      <div class="quiz-footer-next" @click="$emit('next')">
+      <div
+          class="quiz-footer-next"
+          :class="{
+            'quiz-footer-disable': disableNext,
+          }"
+          @click="onClickNext"
+      >
         Далее
         <svg class="quiz-footer-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -42,8 +54,15 @@
 export default {
   name: 'HelloWorld',
   props: {
-    step: Number,
-    total: Number,
+    step: {
+      type: Number,
+      default: 0
+    },
+    total: {
+      type: Number,
+      default: 0
+    },
+    disableNext: Boolean,
   },
   computed: {
     progressPercent() {
@@ -53,7 +72,18 @@ export default {
       return {
         width: this.progressPercent,
       };
-    }
+    },
+    disablePrev() {
+      return this.step === 0;
+    },
+  },
+  methods: {
+    onClickPrev() {
+      if (!this.disablePrev) this.$emit('prev');
+    },
+    onClickNext() {
+      if (!this.disableNext) this.$emit('next');
+    },
   }
 }
 </script>
@@ -139,7 +169,7 @@ export default {
   height: 42px;
   line-height: 42px;
   border-radius: 50px;
-  color: var(--color-9);
+  color: var(--color-1);
   vertical-align: top;
   text-align: center;
   box-shadow: none;
@@ -157,7 +187,8 @@ export default {
   overflow: hidden;
   padding: 0 var(--space-m) 0 var(--space-xl);
   background-color: var(--color-10);
-  border: 1px solid var(--color-7);
+  border: 1px solid transparent;
+  box-shadow: 0 3px 10px 0 var(--color-12);
 }
 
 .quiz-footer-next:after {
@@ -188,7 +219,7 @@ export default {
 .quiz-footer-icon {
   display: inline-block;
   vertical-align: middle;
-  fill: var(--color-9);
+  fill: var(--color-1);
   width: var(--space-xl);
   height: var(--space-xl);
 }
@@ -196,5 +227,10 @@ export default {
 .quiz-footer-prev .quiz-footer-icon {
   fill: var(--color-2);
   margin: 0 -12px;
+}
+
+.quiz-footer-disable {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 </style>

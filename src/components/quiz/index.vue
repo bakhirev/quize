@@ -27,6 +27,7 @@
           v-if="!showOnlyQuestion"
           :step="currentStep"
           :total="totalSteps"
+          :disableNext="disableNext"
           @prev="openPrevStep"
           @next="openNextStep"
           class="quiz-footer"
@@ -133,6 +134,13 @@ export default {
         QUESTION_TEMPLATES.FORM,
         QUESTION_TEMPLATES.NOTIFICATION,
       ].includes(this.currentQuestion?.template_id);
+    },
+    disableNext() {
+      const list = this.questionQueue || [];
+      const lastIndex = list.length - 1;
+      const index = list.indexOf(this.currentQuestionId);
+      const isDefaultQuestion = this.currentQuestion.template_id === QUESTION_TEMPLATES.DEFAULT;
+      return (isDefaultQuestion && index === lastIndex) || lastIndex === 0;
     }
   },
   methods: {
@@ -219,13 +227,16 @@ export default {
 
     changeQuestion(questionId, direction = 1) {
       const delay = 250;
-      this.beginAnimation(direction);
+      const beginDelay = 500;
+      setTimeout(() => {
+        this.beginAnimation(direction);
+      }, beginDelay);
       setTimeout(() => {
         this.revertAnimation(questionId, direction);
-      }, delay);
+      }, (beginDelay + delay));
       setTimeout(() => {
         this.endAnimation();
-      }, delay * 2);
+      }, (beginDelay + delay * 2));
     },
     beginAnimation(direction) {
       this.animationCode = direction === 1

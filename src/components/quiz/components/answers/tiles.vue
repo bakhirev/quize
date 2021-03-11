@@ -70,8 +70,10 @@ export default {
   transition: 0.3s box-shadow;
 }
 
+.quiz-answer-checked,
 .quiz-answer:hover {
-  box-shadow: 0 0 var(--space-xs) var(--color-6);
+  border: 1px solid var(--color-7);
+  box-shadow: 1px 1px 2px var(--color-3);
 }
 
 .quiz-answer-cover {

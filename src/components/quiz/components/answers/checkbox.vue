@@ -1,9 +1,11 @@
 <template>
   <div
       class="quiz-answer"
+      :class="{
+          'quiz-answer-checked': isChecked,
+        }"
       @click="updateState"
   >
-
     <svg
         class="quiz-answer-icon"
         :class="{
@@ -75,15 +77,21 @@ export default {
   transition: 0.3s border, 0.3s box-shadow;
 }
 
-.quiz-answer:hover {
+.quiz-answer-checked {
   border: 1px solid var(--color-7);
-  box-shadow: 1px 1px 2px var(--color-8);
+  box-shadow: 1px 1px 2px var(--color-12);
+}
+
+.quiz-answer:hover {
+  box-shadow: 1px 1px 2px var(--color-3);
 }
 
 .quiz-answer-icon {
   display: inline-block;
   height: 20px;
   width: 20px;
+  padding: 2px;
+  box-sizing: border-box;
   border-radius: 2px;
   vertical-align: top;
   margin-right: var(--space-m);
