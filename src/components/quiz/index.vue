@@ -1,5 +1,10 @@
 <template>
-  <div class="quiz" :style="gridTemplate">
+  <div
+      class="quiz"
+      :class="{
+        'quiz-with-help': !!currentHelp,
+      }"
+  >
     <QuizLoader
         v-if="isLoading"
         message="загрузка вопросов"
@@ -121,13 +126,6 @@ export default {
     },
     questionIds() {
       return this.questions.map(({id}) => id);
-    },
-    gridTemplate() {
-      let template = '"question question" "footer footer"';
-      if (this.currentHelp) template = '"question help" "footer help"';
-      return {
-        'grid-template-areas': template,
-      };
     },
     showOnlyQuestion() {
       return [
@@ -271,9 +269,13 @@ export default {
   background-color: #F8F8F8;
 
   display: grid;
-  grid-template-areas: "question help" "footer help";
+  grid-template-areas: "question question" "footer footer";
   grid-template-columns: auto 300px;
   grid-template-rows: auto 77px;
+}
+
+.quiz-with-help {
+  grid-template-areas: "question help" "footer help";
 }
 
 .quiz-question {
@@ -286,5 +288,14 @@ export default {
 
 .quiz-footer {
   grid-area: footer;
+}
+
+@media screen and (max-width: 850px) {
+  .quiz-with-help {
+    grid-template-areas: "question question" "footer footer";
+  }
+  .quiz-help {
+    display: none;
+  }
 }
 </style>

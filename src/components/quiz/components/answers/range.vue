@@ -1,5 +1,5 @@
 <template>
-  <div class="quiz-answer">
+  <div class="quiz-answer quiz-answer-range">
     <input
         type="text"
         :value="value"
@@ -49,8 +49,9 @@ export default {
     VueRangeSlider,
   },
   data() {
+    const values = this.getValueParts(this.answer.value);
     return {
-      value: this.getValueParts(this.answer.value)[0],
+      value: values[2] || values[0],
     };
   },
   computed: {
@@ -91,6 +92,8 @@ export default {
 </script>
 
 <style>
+@import "../../style/answer-animation-range.css";
+
 .quiz-answer .range-slider-fill {
   background-color: var(--color-10);
 }

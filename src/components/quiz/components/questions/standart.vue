@@ -126,15 +126,18 @@ export default {
   grid-template-areas: "header header" "body cover";
 }
 
-.quiz-question::-webkit-scrollbar {
+.quiz-question::-webkit-scrollbar,
+.quiz-question-body::-webkit-scrollbar {
   width: var(--space-xs);
 }
 
-.quiz-question::-webkit-scrollbar-track {
+.quiz-question::-webkit-scrollbar-track,
+.quiz-question-body::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-.quiz-question::-webkit-scrollbar-thumb {
+.quiz-question::-webkit-scrollbar-thumb,
+.quiz-question-body::-webkit-scrollbar-thumb {
   background-color: var(--color-6);
   outline: none;
 }
@@ -169,6 +172,7 @@ export default {
   position: relative;
   padding: 0 var(--space-xxl);
   grid-area: body;
+  overflow-x: hidden;
 }
 
 .quiz-question-cover-container {
@@ -176,6 +180,7 @@ export default {
   border: none;
   width: 100%;
   text-align: center;
+  overflow-x: hidden;
 }
 
 .quiz-question-cover {
@@ -186,6 +191,24 @@ export default {
   background-size: 80% auto;
   background-repeat: no-repeat;
   vertical-align: top;
+}
+
+.quiz-question-cover {
+  animation-name: quiz-question-cover;
+  animation-duration: 0.6s;
+  animation-delay: 0.25s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+@keyframes quiz-question-cover {
+  from {
+    margin-left: 30px;
+  }
+  to {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: 850px) {

@@ -36,7 +36,7 @@ function getAnswersMock(templateId, property, answers) {
 // type: id, title, description, cover_url
 // template: id, title, description, cover_url
 
-export default {
+const refQuestionAnswer = {
     1: getAnswersMock(ANSWER_TEMPLATES.TILES, 'home', [
         'Бизнес-центр',
         'Торговый центр / Рынок',
@@ -60,7 +60,7 @@ export default {
         ][index];
         return item;
     }),
-    2: getAnswersMock(ANSWER_TEMPLATES.RANGE, 'cars', ['50-1000']),
+    2: getAnswersMock(ANSWER_TEMPLATES.RANGE, 'cars', ['50-1000-525']),
     3: getAnswersMock(ANSWER_TEMPLATES.SELECT, 'exit-in', ['1', '2', '3', '4', '5', 'Более']),
     4: getAnswersMock(ANSWER_TEMPLATES.SELECT, 'exit-out', ['1', '2', '3', '4', '5', 'Более']),
     5: getAnswersMock(ANSWER_TEMPLATES.SELECT, 'exit-reverse', ['нет', '1', '2', 'Более']),
@@ -74,3 +74,8 @@ export default {
     8: getAnswersMock(ANSWER_TEMPLATES.TEXTAREA, 'address')('Город, улица и номер дома')(),
     9: getAnswersMock(ANSWER_TEMPLATES.SEND_FORM, 'email')('Некий текст')(),
 };
+
+refQuestionAnswer[8][0].description = refQuestionAnswer[8][0].title;
+refQuestionAnswer[8][0].title = '';
+
+export default refQuestionAnswer;

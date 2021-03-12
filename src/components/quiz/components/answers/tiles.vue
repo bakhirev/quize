@@ -1,6 +1,6 @@
 <template>
   <div
-      class="quiz-answer"
+      class="quiz-answer quiz-answer-tiles"
       @click="updateState"
   >
     <img
@@ -57,6 +57,8 @@ export default {
 </script>
 
 <style scoped>
+@import "../../style/answer-animation-title.css";
+
 .quiz-answer {
   display: inline-block;
   width: 40%;

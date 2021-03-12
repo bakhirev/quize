@@ -1,6 +1,6 @@
 <template>
   <div
-      class="quiz-answer"
+      class="quiz-answer quiz-answer-select"
       :class="{
           'quiz-answer-checked': isChecked,
         }"
@@ -55,13 +55,17 @@ export default {
 </script>
 
 <style scoped>
+@import "../../style/answer-animation-select.css";
+
 .quiz-answer {
   display: block;
   padding: var(--space-l);
   border: 1px solid var(--color-8);
   border-radius: var(--space-s);
   margin-bottom: var(--space-l);
+  box-sizing: border-box;
   cursor: pointer;
+  overflow: hidden;
   transition: 0.3s border, 0.3s box-shadow;
 }
 

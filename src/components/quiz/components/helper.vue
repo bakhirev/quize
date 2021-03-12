@@ -48,6 +48,23 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #F7F7F7;
+
+  animation-name: quiz-help;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes quiz-help {
+  from {
+    opacity: 0;
+    background-color: transparent;
+  }
+  to {
+    opacity: 1;
+    background-color: #F7F7F7;
+  }
 }
 
 .quiz-help-container {

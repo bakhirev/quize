@@ -1,0 +1,56 @@
+.quiz-answer-range {
+    animation-name: quiz-answer-range;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+.quiz-answer-range:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.quiz-answer-range:nth-of-type(2) {
+    animation-delay: 0.05s;
+}
+
+.quiz-answer-range:nth-of-type(3) {
+    animation-delay: 0.1s;
+}
+
+.quiz-answer-range:nth-of-type(4) {
+    animation-delay: 0.15s;
+}
+
+.quiz-answer-range:nth-of-type(5) {
+    animation-delay: 0.2s;
+}
+
+.quiz-answer-range:nth-of-type(6) {
+    animation-delay: 0.25s;
+}
+
+.quiz-answer-range:nth-of-type(7) {
+    animation-delay: 0.3s;
+}
+
+.quiz-answer-range:nth-of-type(8) {
+    animation-delay: 0.35s;
+}
+
+.quiz-answer-range:nth-of-type(9) {
+    animation-delay: 0.4s;
+}
+
+@keyframes quiz-answer-range {
+    from {
+        width: 90%;
+        margin-left: 10%;
+        opacity: 0;
+    }
+    to {
+        width: 100%;
+        margin-left: 0;
+        opacity: 1;
+    }
+}
