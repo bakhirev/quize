@@ -98,18 +98,23 @@ export default {
   .quiz-question {
     grid-template-areas: "header" "body";
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(100px, max-content) auto;
+    grid-template-rows: minmax(100px, max-content) max-content;
   }
 
   .quiz-question-with-cover {
     grid-template-areas: "header" "cover" "body";
-    grid-template-rows: minmax(100px, max-content) minmax(400px, max-content) auto;
+    grid-template-rows: minmax(100px, max-content) minmax(400px, max-content) max-content;
   }
 
   .quiz-question-cover {
     width: auto;
     height: 90%;
     background-size: auto 80%;
+  }
+
+  .quiz-answer-title {
+    overflow: hidden;
+    width: 80%;
   }
 }
 </style>

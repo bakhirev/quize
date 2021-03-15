@@ -266,7 +266,7 @@ export default {
   font-family: "GilroyRegular";
   font-size: var(--font-size-m);
   overflow: hidden;
-  background-color: #F8F8F8;
+  background-color: var(--color-5);
 
   display: grid;
   grid-template-areas: "question question" "footer footer";
@@ -291,6 +291,9 @@ export default {
 }
 
 @media screen and (max-width: 850px) {
+  .quiz {
+    grid-template-rows: auto 144px;
+  }
   .quiz-with-help {
     grid-template-areas: "question question" "footer footer";
   }

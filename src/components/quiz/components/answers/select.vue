@@ -120,4 +120,11 @@ export default {
   vertical-align: middle;
   white-space: nowrap;
 }
+
+@media screen and (max-width: 850px) {
+  .quiz-answer-title {
+    overflow: hidden;
+    width: 80%;
+  }
+}
 </style>

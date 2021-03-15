@@ -215,16 +215,20 @@ export default {
   .quiz-question {
     grid-template-areas: "header" "body";
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(100px, max-content) auto;
+    grid-template-rows: max-content max-content;
   }
 
   .quiz-question-with-cover {
     grid-template-areas: "header" "cover" "body";
-    grid-template-rows: minmax(100px, max-content) minmax(400px, max-content) auto;
+    grid-template-rows: minmax(100px, max-content) minmax(400px, max-content) max-content;
+  }
+
+  .quiz-question-body {
+    overflow: hidden;
   }
 
   .quiz-question-cover {
-    width: auto;
+    width: 100%;
     height: 90%;
     background-size: auto 80%;
   }

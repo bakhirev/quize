@@ -111,6 +111,7 @@ export default {
   display: block;
   width: 90%;
   max-width: 400px;
+  box-sizing: border-box;
   margin: var(--space-xxl) auto 0 auto;
   padding: var(--space-xl) var(--space-xxl) var(--space-xxl) var(--space-xxl);
   background-color: var(--color-5);

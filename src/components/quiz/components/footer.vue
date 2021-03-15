@@ -233,4 +233,10 @@ export default {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+@media screen and (max-width: 850px) {
+  .quiz-footer-progress-value {
+    margin-left: 0;
+  }
+}
 </style>
