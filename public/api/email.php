@@ -28,19 +28,15 @@
     function sendEmail($email, $message) {
 		if (is_null($message)) return false;
 
-		$headers = array(
-			'From' => 'support@bakhirev.biz',
-			'Reply-To' => 'support@bakhirev.biz',
-			'X-Mailer' => 'PHP/' . phpversion(),
-			'Content-type' => 'text/html; charset="utf-8"',
-		);
+        $header  = "From: support@bakhirev.biz\n";
+        $header .= "Content-type: text/html; charset=\"utf-8\"";
 
         $text  = "<HTML>\r\n";
         $text .= "<HEAD>\r\n";
         $text .= "<META http-equiv=Content-Type content='text/html; charset=utf-8'>\r\n";
         $text .= "</HEAD>\r\n";
         $text .= "<BODY>\r\n";
-		$text .= wordwrap($message, 70, '\\r\\n');
+		$text .=  $message."\r\n";
         $text .= "</BODY>\r\n";
         $text .= "</HTML>";
 
@@ -57,7 +53,7 @@
 			if (is_array($data[$key])) {
 				$text .= $value . ': ' . implode(', ', array_map(htmlspecialchars, $data[$key])) . '<br>';
 			} else {
-				$text .= $value . ': ' . htmlspecialchars($data[$key]) . '<br>\r\n';
+				$text .= $value . ': ' . htmlspecialchars($data[$key]) . '<br>';
 			}
         }
 		return $text;
