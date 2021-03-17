@@ -13,10 +13,10 @@ class HttpClient {
     return this.sendRequest('get', urlWithData, data);
   }
   post(url, body) {
-    return this.sendRequest('get', url, body);
+    return this.sendRequest('post', url, body);
   }
   put(url, body) {
-    return this.sendRequest('get', url, body);
+    return this.sendRequest('put', url, body);
   }
   delete(url) {
     return this.sendRequest('delete', url);

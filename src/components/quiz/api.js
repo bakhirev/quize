@@ -84,7 +84,5 @@ export function getHelps(testId) {
 export function sendResult(data) {
     console.log(`POST http://quiz/result`);
     console.dir(data);
-    return http.mock({
-        status: 'ok'
-    }, 100);
+    return http.post('//bakhirev.biz/demo/quiz/api/email.php', data);
 }
