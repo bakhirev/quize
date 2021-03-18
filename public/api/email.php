@@ -12,7 +12,8 @@
 		'terminals' => 'Сколько терминалов оплаты вам нужно',
 		'address' => 'Адрес объекта',
 	]);
-    $status = sendEmail('alexey-bakhirev@yandex.ru', $message);
+    $status = sendEmail('lid@r-p-s.ru', $message);
+    // sendEmail('alexey-bakhirev@yandex.ru', $message);
 	sendResponse($status ? 'ok' : 'error');
 
     function getJsonFromBody() {
