@@ -4,14 +4,6 @@ import {
     QUESTION_TEMPLATES
 } from './helpers/constants';
 
-// quiz: id, title, description, cover_url, type_id, first_question_id
-//   question: id, title, description, cover_url, template_id, next_question_id, property
-//    answer: id, title, description, cover_url, template_id, property, value
-// help: id, title, description, cover_url, answer_id, question_id
-
-// type: id, title, description, cover_url
-// template: id, title, description, cover_url
-
 export function getQuiz(quizId) {
     console.log(`GET http://quiz/${quizId}`);
     return http.mock({id: 1, title: 'Выбор парковки'}, 100);
@@ -38,12 +30,10 @@ export function getQuestions(quizId) {
 }
 
 export function getAnswers(questionId) {
-    console.log(`GET http://quiz/answers?questionId=${questionId}`);
     return http.mock(answersByQuestion[questionId], 100);
 }
 
 export function getHelps(testId) {
-    console.log(`GET http://quiz/help?testId=${testId}`);
     if (testId === 666) {
         return http.mock([], 100);
     }
@@ -82,7 +72,9 @@ export function getHelps(testId) {
 }
 
 export function sendResult(data) {
-    console.log(`POST http://quiz/result`);
-    console.dir(data);
-    return http.post('//bakhirev.biz/demo/quiz/api/email.php', data);
+    const getElement = (name) => document.querySelectorAll(`meta[name=${name}]`)[0] || {};
+    const propertyName = getElement('csrf-param').content || '';
+    data[propertyName] = getElement('csrf-token').content || null;
+
+    return http.post('//ru/site/send-quiz-message/', data);
 }
