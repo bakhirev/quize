@@ -13,6 +13,7 @@ export const QUESTION_TEMPLATES = {
     MULTIPLE: 3,
     FORM: 4,
     NOTIFICATION: 5,
+    TEXTAREA: 6,
 };
 
 export const ANIMATION_CODE = {

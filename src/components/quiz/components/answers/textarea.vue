@@ -7,6 +7,7 @@
         v-model="value"
         class="quiz-answer-textarea"
         :placeholder="answer.description || ''"
+        @keyup="updateState"
         @blur="updateState"
     />
   </div>

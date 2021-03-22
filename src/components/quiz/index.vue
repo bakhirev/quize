@@ -139,7 +139,7 @@ export default {
       const index = list.indexOf(this.currentQuestionId);
       const isDefaultQuestion = this.currentQuestion.template_id === QUESTION_TEMPLATES.DEFAULT;
       return (isDefaultQuestion && index === lastIndex) || lastIndex === 0;
-    }
+    },
   },
   methods: {
     fetchQuiz() {
@@ -211,6 +211,7 @@ export default {
     updateState({state, question, answer}) {
       this.localState = {...state};
       const needUseNextButton = answer.template_id === ANSWER_TEMPLATES.RANGE
+        || question.template_id === QUESTION_TEMPLATES.TEXTAREA
         || question.template_id === QUESTION_TEMPLATES.MULTIPLE;
       if (needUseNextButton) return;
       this.nextStep(question, answer);
@@ -267,6 +268,7 @@ export default {
   font-size: var(--font-size-m);
   overflow: hidden;
   background-color: var(--color-5);
+  line-height: initial;
 
   display: grid;
   grid-template-areas: "question question" "footer footer";

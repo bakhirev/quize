@@ -99,8 +99,8 @@ export default {
 .quiz-answer-icon-checked::after {
   content: '';
   position: absolute;
-  top: 1.8px;
-  left: 1.8px;
+  top: 2px;
+  left: 2px;
   display: inline-block;
   width: 10px;
   height: 10px;

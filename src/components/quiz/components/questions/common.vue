@@ -65,6 +65,7 @@ export default {
         QUESTION_TEMPLATES.DEFAULT,
         QUESTION_TEMPLATES.RANGE,
         QUESTION_TEMPLATES.MULTIPLE,
+        QUESTION_TEMPLATES.TEXTAREA,
       ].includes(this.question.template_id);
     }
   },
